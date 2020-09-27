@@ -8,6 +8,7 @@ import th.ac.ku.atm.model.Customer;
 import java.util.List;
 
 @Service
+//customer part
 public class CustomerService {
 
     private CustomerRepository repository;

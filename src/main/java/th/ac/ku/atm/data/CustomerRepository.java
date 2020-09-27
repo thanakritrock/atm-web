@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public class CustomerRepository {
-
+    //database part
     private JdbcTemplate jdbcTemplate;
 
     public CustomerRepository(JdbcTemplate jdbcTemplate) {
