@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import th.ac.ku.atm.data.CustomerRepository;
 import th.ac.ku.atm.model.Customer;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -46,11 +47,11 @@ public class CustomerService {
         }
         return null;
     }
+
     private String hash(String pin) {
         String salt = BCrypt.gensalt(12);
         return BCrypt.hashpw(pin, salt);
     }
-
 
 
 }

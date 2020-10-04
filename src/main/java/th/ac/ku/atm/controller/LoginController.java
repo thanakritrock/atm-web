@@ -23,6 +23,7 @@ public class LoginController {
     public String getLoginPage() {
         return "login";   // return login.html
     }
+
     @PostMapping
     public String login(@ModelAttribute Customer customer, Model model) {
         Customer matchingCustomer = customerService.checkPin(customer);
