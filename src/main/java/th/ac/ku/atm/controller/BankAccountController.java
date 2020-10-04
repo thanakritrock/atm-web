@@ -41,10 +41,21 @@ public class BankAccountController {
     public String editAccount(@PathVariable int id,
                               @ModelAttribute BankAccount bankAccount,
                               Model model) {
+        System.out.println(id);
         accountService.editBankAccount(bankAccount);
         model.addAttribute("bankaccounts",accountService.getBankAccounts());
         return "redirect:/bankaccount";
     }
+
+    @PostMapping("/delete/{id}")
+    public String deleteAccount(@PathVariable int id,
+                                @ModelAttribute BankAccount bankAccount,
+                                Model model) {
+        accountService.deleteBankAccount(bankAccount);
+        model.addAttribute("bankaccounts",accountService.getBankAccounts());
+        return "redirect:/bankaccount";
+    }
+
 
 
 }
