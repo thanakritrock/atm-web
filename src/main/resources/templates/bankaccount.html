@@ -35,24 +35,25 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-light">
         <tr>
-            <th>Id</th>
-            <th>CustomerId</th>
-            <th>Type</th>
-            <th>Balance</th>
-            <th>Actions</th>
-            <th>Delete Account</th>
+            <th colspan="1">Id</th>
+            <th colspan="2">CustomerId</th>
+            <th colspan="2">Type</th>
+            <th colspan="2">Balance</th>
+            <th colspan="4">Actions</th>
+            <th colspan="2">Delete Account</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="account : ${bankaccounts}">
-            <td th:text="${account.id}"></td>
-            <td th:text="${account.customerId}"></td>
-            <td th:text="${account.type}"></td>
-            <td th:text="${account.balance}"></td>
-            <td>
-                <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
+            <td colspan="1" th:text="${account.id}"></td>
+            <td colspan="2" th:text="${account.customerId}"></td>
+            <td colspan="2" th:text="${account.type}"></td>
+            <td colspan="2" th:text="${account.balance}"></td>
+            <td colspan="4">
+                <a class="btn btn-primary" th:href="@{/bankaccount/deposit/{id}(id=${account.id})}">Deposit</a>
+                <a class="btn btn-primary" th:href="@{/bankaccount/withdraw/{id}(id=${account.id})}">Withdraw</a>
             </td>
-            <td><form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
+            <td colspan="2"><form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
                 <button type="submit" class="btn btn-danger">Delete</button>
             </form></td>
 

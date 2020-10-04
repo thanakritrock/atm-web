@@ -9,6 +9,7 @@ public class BankAccount {
     private String type;
     private double balance;
 
+
     @JsonIgnoreProperties(ignoreUnknown = true)
 
     public int getId() {
