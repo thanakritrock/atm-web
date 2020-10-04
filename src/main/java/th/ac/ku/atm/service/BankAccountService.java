@@ -1,39 +1,33 @@
 package th.ac.ku.atm.service;
 
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import th.ac.ku.atm.model.BankAccount;
-import th.ac.ku.atm.model.Customer;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.springframework.http.*;
+import org.springframework.web.client.RestTemplate;
+
 
 @Service
 public class BankAccountService {
 
-    private List<BankAccount> bankAccountList;
+    private RestTemplate restTemplate;
 
-    @PostConstruct
-    public void postConstruct() {
-        this.bankAccountList = new ArrayList<>();
+    public BankAccountService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 
-    public void createAccount(BankAccount bankAccount) {
-        bankAccountList.add(bankAccount);
-    }
+    public List<BankAccount> getCustomerBankAccount(int customerId) {
+        String url = "http://localhost:8091/api/bankaccount/customer/" +
+                customerId;
+        ResponseEntity<BankAccount[]> response =
+                restTemplate.getForEntity(url, BankAccount[].class);
 
-    public List<BankAccount> getAccounts() {
-        return new ArrayList<>(this.bankAccountList);
-    }
+        BankAccount[] accounts = response.getBody();
 
-    public BankAccount findAccount(String id) {
-        for (BankAccount bankAccount : bankAccountList) {
-            if (bankAccount.getCustomerId().equals(id))
-                return bankAccount;
-        }
-        return null;
+        return Arrays.asList(accounts);
     }
-
 
 }
+
