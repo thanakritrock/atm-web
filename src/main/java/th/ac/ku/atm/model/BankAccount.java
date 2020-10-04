@@ -5,31 +5,24 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class BankAccount {
 
     private int id;
-    private String customerId;
+    private int customerId;
     private String type;
     private double balance;
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public BankAccount(int id, String customerId, String type, double balance) {
-        this.id = id;
-        this.customerId = customerId;
-        this.type = type;
-        this.balance = balance;
-    }
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
+    public int setId(int id) {
+        return this.id = id;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 
@@ -45,7 +38,7 @@ public class BankAccount {
         return balance;
     }
 
-    public void addBalance(double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
